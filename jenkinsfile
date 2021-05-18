@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('test') { 
       environment{
-        name = sh(script: '''curl GET http://54.244.111.147:8080/crumbIssuer/api/json --user admin:admin|awk  -F , '{print $2}'  ''', returnStdout: true)        
+        name = sh(script: '''curl GET http://54.244.111.147:8080/crumbIssuer/api/json --user admin:admin|awk  -F , '{print $2}'|awk  -F : '{print $2}'|sed 's/"//g'  ''', returnStdout: true)        
       }
       steps {
         sh ' echo $name '
