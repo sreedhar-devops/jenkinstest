@@ -1,0 +1,15 @@
+pipeline {
+  agent { label 'master' }
+  stages {
+    stage('test') { 
+      environment{
+        name = sh(script: 'echo sreedhar', returnStdout: true)        
+      }
+      steps {
+        sh ' echo $name '
+      }
+    }
+    
+    }
+  }
+}
