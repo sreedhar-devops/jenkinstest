@@ -2,9 +2,12 @@ pipeline {
   agent { label 'master' }
   stages {
     stage('test') { 
+      when {
+        expression { value == 'Rosy'}
+      }    
       environment{
         value = "${value}"
-           }
+           } 
       steps {
         sh ' echo $value '
       }
