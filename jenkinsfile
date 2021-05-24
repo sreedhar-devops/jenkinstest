@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('test') { 
       environment{
+        value = ${value}
            }
       steps {
         sh ' echo $value '
