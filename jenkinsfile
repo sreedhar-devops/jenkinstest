@@ -2,14 +2,12 @@ pipeline {
   agent { label 'master' }
   stages {
     stage('test') { 
-      when {
-        expression { value ==~ '(Rosy|Veni)'}
-      }    
+       crumbToken = sh(script: ''' curl GET http://35.163.210.168:8080/crumbIssuer/api/json --user admin:admin |awk -F , '{print $2}' |awk -F : '{print $2}'|sed 's/"//g'  ''', returnStdout: true)          
       environment{
         value = "${value}"
            } 
       steps {
-        sh ' echo $value '
+        sh ''' curl -X POST -u admin:admin  -H "Jenkins-Crumb: $crumbToken" http://35.163.210.168:8080/job/testingcurl/buildWithParameters?name="sreedhar"&country="India"&mobilenumber="0000000000"  '''
       }
     }
     
