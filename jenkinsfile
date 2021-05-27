@@ -7,7 +7,7 @@ pipeline {
         crumbToken = sh(script: ''' curl GET http://35.163.210.168:8080/crumbIssuer/api/json --user admin:admin |awk -F , '{print $2}' |awk -F : '{print $2}'|sed 's/"//g'  ''', returnStdout: true)          
            } 
       steps {
-        sh ''' curl -X POST -u admin:admin  -H "Jenkins-Crumb: $crumbToken" http://35.163.210.168:8080/job/testingcurl/buildWithParameters?name="sreedhar"&country="India"&mobilenumber="0000000000"  '''
+        sh ''' curl -X POST -u admin:admin  'http://35.163.210.168:8080/job/testingcurl/buildWithParameters?name="sreedhar"&country="India"&mobilenumber="0000000000"'  -H 'Jenkins-Crumb: $crumbToken' '''
       }
     }
     
