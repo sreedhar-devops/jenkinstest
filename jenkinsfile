@@ -5,12 +5,12 @@ pipeline {
       
       steps {
       script{
-             if ( -d "$HOME/smoketest" )
+             if [ [ -d "$HOME/smoketest" ] ]
              then
                  mkdir -p $HOME/smoketest
              fi
              status=`curl -u admin:11c89c5726122b71c34b351cd058c36f89  http://18.236.106.74:8080/job/smoketestfree/lastBuild/api/json|jq .building`
-             if ( $status == "true" )
+             if [ $status == "true" ]
              then
                   echo 600 > delayseconds
              else 
