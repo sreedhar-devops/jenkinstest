@@ -9,12 +9,12 @@ pipeline {
              then
                  mkdir -p $HOME/smoketest
              fi
-             status=`curl -u admin:117d0c9ca6e74619864aa8dca6930b07ef  http://54.218.73.104:8080/job/smoketestfree/lastBuild/api/json|jq .building`
+             status=`curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building`
              if [ $status == "true" ]
              then
                   echo 600 > delayseconds
              else 
-                  curl -u admin:117d0c9ca6e74619864aa8dca6930b07ef  http://54.218.73.104:8080/job/smoketestfree/build?token=my-token
+                  curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/build?token=my-token
              fi
       }
       }
