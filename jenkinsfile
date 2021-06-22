@@ -6,7 +6,7 @@ pipeline {
       steps {
       script {
              //  echo hi
-             if( ! 0 ) {
+             if( fileExists("/var/lib/jenkins/smoketest") ) {
             // then
                  echo "hi"
                  }
