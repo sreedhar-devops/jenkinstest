@@ -5,21 +5,18 @@ pipeline {
       
       steps {
       script {
-             //  echo hi
-             if( fileExists("/var/lib/jenkins/smoketest") ) {
-            // then
-                 echo "hi"
+               if( !fileExists("/var/lib/jenkins/smoketest") ) {         
+                 sh 'mkdir -p /var/lib/jenkins/smoketest'
                  }
-            // fi
-            // status=`curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building`
-            // if [ $status == "true" ]
-            // then
-            //      echo 600 > delayseconds
-            // else 
-              //    echo 0 > delayseconds
-              //    curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/build?token=my-token
-            // fi
-      }
+              status=`curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building`
+              if (status == "true"){
+                  echo 600 > delayseconds
+                  }
+               else { 
+                  echo 0 > delayseconds
+                  curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/build?token=my-token              
+              }
+           }
       }
     }
     
