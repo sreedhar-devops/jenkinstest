@@ -5,7 +5,7 @@ pipeline {
       
       steps {
       script{
-             if [ [ -d "$HOME/smoketest" ] ]
+             if  [ -d $HOME/smoketest ] 
              then
                  mkdir -p $HOME/smoketest
              fi
