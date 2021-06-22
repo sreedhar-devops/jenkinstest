@@ -11,19 +11,13 @@ pipeline {
                if( !fileExists("/var/lib/jenkins/smoketest") ) {         
                  sh 'mkdir -p /var/lib/jenkins/smoketest'
                  }
-                //def status = sh(script:'curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building', returnStdout:true).trim()
+                def status = sh(script:'curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building', returnStdout:true).trim()
                //echo (status.getClass())
               // sh 'curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building>statusfile'
               // status= readFile'statusfile'
                echo status
                //def status1=status.toString()
-               if(status == 'true') {
-                  echo 600 > '/var/lib/jenkins/smoketest/delayseconds'
-                  }
-               else { 
-                  echo 0 > '/var/lib/jenkins/smoketest/delayseconds'
-                  sh 'curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/build?token=my-token'              
-              }
+
            }
       }
     }
