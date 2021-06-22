@@ -5,18 +5,18 @@ pipeline {
       
       steps {
       script{
-             if [ -d $HOME/smoketest ] 
+             if [ 1 ] 
              then
                  mkdir -p $HOME/smoketest
              fi
-             status=`curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building`
-             if [ $status == "true" ]
-             then
-                  echo 600 > delayseconds
-             else 
-                  echo 0 > delayseconds
-                  curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/build?token=my-token
-             fi
+            // status=`curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building`
+            // if [ $status == "true" ]
+            // then
+            //      echo 600 > delayseconds
+            // else 
+              //    echo 0 > delayseconds
+              //    curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/build?token=my-token
+            // fi
       }
       }
     }
