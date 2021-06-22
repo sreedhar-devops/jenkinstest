@@ -8,7 +8,9 @@ pipeline {
                if( !fileExists("/var/lib/jenkins/smoketest") ) {         
                  sh 'mkdir -p /var/lib/jenkins/smoketest'
                  }
-              if ( sh 'curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building' == "true"){
+               def status = sh(script:'curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building', returnStdout:true).trim()
+               echo status
+               if ( status == "true"){
                   echo 600 > '/var/lib/jenkins/smoketest/delayseconds'
                   }
                else { 
