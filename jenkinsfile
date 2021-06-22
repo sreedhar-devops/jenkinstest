@@ -5,7 +5,7 @@ pipeline {
       
       steps {
       script{
-               echo hi
+             //  echo hi
            //  if [ true ] 
             // then
                 // mkdir -p $HOME/smoketest
