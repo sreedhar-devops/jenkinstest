@@ -6,7 +6,7 @@ pipeline {
       steps {
       script {
              //  echo hi
-             if( ! -d "$HOME/smoketest" ) {
+             if( ! (-d $HOME/smoketest) ) {
             // then
                  mkdir -p $HOME/smoketest
                  }
