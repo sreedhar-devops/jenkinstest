@@ -14,6 +14,7 @@ pipeline {
              then
                   echo 600 > delayseconds
              else 
+                  echo 0 > delayseconds
                   curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/build?token=my-token
              fi
       }
