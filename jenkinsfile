@@ -19,8 +19,11 @@ pipeline {
                if ( status == "true" ) {
                   echo 600 > '/var/lib/jenkins/smoketest/delayseconds'
                   }
-               //def status1=status.toString()
-
+               else { 
+                  echo 0 > '/var/lib/jenkins/smoketest/delayseconds'
+                  sh 'curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/build?token=my-token'              
+              }                  
+               
            }
       }
     }
