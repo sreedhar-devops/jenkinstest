@@ -6,9 +6,9 @@ pipeline {
       steps {
       script {
              //  echo hi
-             if( ! (-d $HOME/smoketest) ) {
+             if( ! 0 ) {
             // then
-                 mkdir -p $HOME/smoketest
+                 echo "hi"
                  }
             // fi
             // status=`curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building`
