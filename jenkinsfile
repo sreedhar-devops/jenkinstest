@@ -8,7 +8,7 @@ pipeline {
 
       steps {
       script {
-               if(env.SmokeTest == "yes") {
+               if(env.SmokeTest == "Yes") {
                if( !fileExists("/var/lib/jenkins/smoketest") ) {         
                  sh 'mkdir -p /var/lib/jenkins/smoketest'
                  }
