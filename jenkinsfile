@@ -22,7 +22,7 @@ pipeline {
                   }
                else { 
                  // sh ''' echo 0 > /var/lib/jenkins/smoketest/delayseconds '''
-                  sh 'curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/build?token=my-token'              
+                  sh 'curl -u admin:1149f7809a63e79077e07b6c7c1f7ce0f9  http://localhost:8080/job/downstreamjob/build?token=my-token'              
               }   
               }
               else {
