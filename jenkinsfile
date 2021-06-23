@@ -14,7 +14,7 @@ pipeline {
                  }
                 def status = sh(script:'curl -u admin:1149f7809a63e79077e07b6c7c1f7ce0f9  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building', returnStdout:true).trim()
                //echo (status.getClass())
-              // sh 'curl -u admin:11cb1244bb77821dbd847aa548ececa319  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building>statusfile'
+              // sh 'curl -u admin:1149f7809a63e79077e07b6c7c1f7ce0f9  http://localhost:8080/job/downstreamjob/lastBuild/api/json|jq .building>statusfile'
               // status= readFile'statusfile'
                echo status
                if ( status == "true" ) {
